@@ -1,6 +1,6 @@
 const dataList = [ // db에서 가져온 data(뿌릴 데이터)라고 가정
     {
-        "mainpage-description" : "왜 흰색글씨가 나오지? english is possible?",
+        "mainpage-description" : "이제 흰색글씨 안나온다 와우.. 해결..",
         "mainpage-company":
             {
                 "distinct-number": "9876BA54321DC"

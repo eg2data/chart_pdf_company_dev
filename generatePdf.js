@@ -11,9 +11,23 @@ import { getData } from "./DB"
 // const font = { Nanum };
 // import SourceHanSans from "./SourceHanSans/OTF/Korean/SourceHanSansK-Regular.otf"; // otf는 오류나네 + 여러 글꼴 쓰려면 how?
 // const font = { SourceHanSans };
+// const MaruBuri = { fs.readFileSync("./MaruBuri-Regular.ttf")
+// const font = { MaruBuri};
+// const font = {
+//     MaruBuri: fs.readFileSync("./MaruBuri-Regular.ttf"),
+//     subset: false,
+// }
+// const font = {
+//     data: fs.readFileSync("./MaruBuri-Regular.ttf"),
+//     subset: false,
+// }
 const MaruBuri = fs.readFileSync("./MaruBuri-Regular.ttf")
-const font = { MaruBuri };
-
+const font = {
+    MaruBuri : {
+        data: MaruBuri,
+        subset: false
+    }
+};
 
 // 그래프 데이터를 받아서, 여기서 바로 mapping 후 pdf에 출력한다.
 // 가공이 필요하지 않은 나머지 text도, 여기서 그냥 바로 받아버렸다. 더 나은 방법은?
