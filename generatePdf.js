@@ -4,29 +4,6 @@ import template from "./labelmake-template.json" // template 새로 load하면 "
 import { generateChart } from "./generateChart"
 import { getData } from "./DB"
 
-// // import jscardet from "jschardet";
-// // import iconv from "iconv-lite"
-// // const Nanum = fs.readFileSync("./NanumGothic-Regular.ttf")
-// // const font = { Nanum };
-// // import SourceHanSans from "./SourceHanSans/OTF/Korean/SourceHanSansK-Regular.otf"; // otf는 오류나네 + 여러 글꼴 쓰려면 how?
-// // const font = { SourceHanSans };
-// // const MaruBuri = { fs.readFileSync("./MaruBuri-Regular.ttf")
-// // const font = { MaruBuri};
-// // const font = {
-// //     MaruBuri: fs.readFileSync("./MaruBuri-Regular.ttf"),
-// //     subset: false,
-// // }
-// // const font = {
-// //     data: fs.readFileSync("./MaruBuri-Regular.ttf"),
-// //     subset: false,
-// // }
-// const MaruBuri = fs.readFileSync("./MaruBuri-Regular.ttf")
-// const font = {
-//     MaruBuri : {
-//         data: MaruBuri,
-//         subset: false
-//     }
-// };
 const NanumGothic = fs.readFileSync("./NanumGothic-Regular.ttf")
 const font = {
     NanumGothic : {
@@ -65,7 +42,7 @@ generateChart()
                 // "general-mentalIllness-each-PHQ9": charts["general-mentalIllness-each-PHQ9"],
                 // "general-occuStress-overall-male"
                 // "general-occuStress-overall-female"
-                // "general-occuStress-mean5yrs-male": charts["general-occuStress-mean5yrs-male"],
+                "general-occuStress-mean5yrs-male": charts["general-occuStress-mean5yrs-male"],
                 // "general-occuStress-mean5yrs-female"
 
                 // "largeScaleCatOverall-riskPriority-level-1"

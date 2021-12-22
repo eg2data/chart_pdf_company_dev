@@ -5,21 +5,33 @@ import fs from "fs";
 
 // labelmake-template.json > "fontName":"NanumGothic"
 
-// 여기 사실 필요없는데 음.
-const width = 500; //px
-const height = 500; //px
-const backgroundColour = 'white';
-const chartJSNodeCanvas = new ChartJSNodeCanvas({ width, height, backgroundColour});
+// 0. 각 그래프마다 영역을 주자. => 알아서 sizing되는 것 같은데. canvas 크기와 무관하게 음.. => width, height 뭔 의미?
+const chartJSNodeCanvas = new ChartJSNodeCanvas({ type: 'svg', width: 600, height: 600 });
+// const generalMentalIllnessMean5yrsCanvas = new ChartJSNodeCanvas({ type: 'svg', width: 340, height: 136});
+// const generalOccuStressMean5yrsMaleCanvas = new ChartJSNodeCanvas({ type: 'svg', width: 340, height: 60});
+
 
 // 총 5가지 종류의 charts 활용
     // hexagon(mental illness) / heptagon(occupational stress)
     // vertical-bar(5 years mean) / horizontal-bar(risk priority in cat-overall)
     // polar-area(points in cat-overall)
 
-// 전체 폰트를 NanumGothic로 통일하고자 함. generatePdf.js에서 export하고 여기서 import? 그리고 ChartJS.defaults에서 적용? 근데 일단 안됨
 // legend 또한 template 처리 + 색상 pick 하여 적용
 ChartJS.defaults.plugins.legend.display = false;
-ChartJS.defaults.font.size = 15; // radar의 label에는 왜 안먹지// 1. <defaults>
+// global font를 NanumGothic로 통일하고자 함
+// generatePdf.js에서 export하고 여기서 import? 그리고 ChartJS.defaults에서 적용? 안됨.
+// const NanumGothic = fs.readFileSync("./NanumGothic-Regular.ttf")
+// const font = {
+//     NanumGothic : {
+//         data: NanumGothic,
+//         subset: false
+//     }
+// };
+// ChartJS.defaults.font.family = NanumGothic;
+// ChartJS.defaults.font.family = font;
+// ChartJS.defaults.font.family = "NanumGothic";
+
+// 1. <defaults>
     // labels for hexagon, heptagon
 const mentalIllnessLabels = [
     '우울감',
@@ -53,7 +65,12 @@ const overallOptions = {
                 display: false
             },
             grid: {
-                color: ['red', 'blue', 'black', 'yellow']
+                color: [
+                   'rgb(239, 239, 239)',
+                    'rgb(251, 240, 220)',
+                    'rgb(244, 209, 212)',
+                    'rgb(223, 207, 209)'
+                ]
             },
             pointLabels: {
                 color: 'black',
@@ -75,7 +92,13 @@ const mean5yrsScales =  {
                     display: false
                 },
                 ticks: {
-                    color: ['black', 'black', 'black', 'black', 'gray'], // white로 하면 글자가 아예 안보이네 음..
+                    color: [
+                        'rgb(0, 0, 0)',
+                        'rgb(0, 0, 0)',
+                        'rgb(0, 0, 0)',
+                        'rgb(0, 0, 0)',
+                        'rgba(255, 255, 255, 0.5)'
+                    ], // white로 하면 글자가 아예 안보이네 음..
                     autoskip: false,
                     maxRotation: 90,
                     minRotation: 90,
@@ -86,7 +109,13 @@ const mean5yrsScales =  {
                 beginAtZero: true,
                 grid: {
                     drawBorder: false,
-                    color: ['black', 'red', 'blue', 'black', 'yellow'] // black 안넣고 표현 안되나.. 시작이 0이 아니도록.
+                    color: [
+                        'black',
+                        'rgb(239, 239, 239)',
+                        'rgb(251, 240, 220)',
+                        'rgb(244, 209, 212)',
+                        'rgb(223, 207, 209)'
+                    ] // black 안넣고 표현 안되나.. 시작이 0이 아니도록.
                 },
                 ticks: {
                     display: false,
@@ -101,29 +130,28 @@ const generalMentalIllnessOverallData = [
     {
         data: [70, 42, 76, 15, 36, 20], // get from DB
         fill: false,
-        backgroundColor: 'rgba(0, 0, 0, 0.0)',
         pointStyle: 'dash', // 그나마 dash가 가장..
-        borderWidth: 0.7,
-        borderColor: 'black',
+        borderWidth: 3,
+        borderColor: 'rgb(0, 0, 0)',
     },
     {
         data: [35, 54, 51, 47, 51, 20],
         fill: true,
-        backgroundColor: 'rgba(135, 135, 135, 0.4)',
+        backgroundColor: 'rgba(201, 201, 201, 0.4)',
         pointStyle: 'dash',
-        borderWidth: 0.5,
-        borderColor: 'black',
+        borderWidth: 1,
+        borderColor: 'rgb(137, 137, 137)',
     }]
 const generalMentalIllnessMean5yrsData = [
     {
         data: [45, 62, 71, 59, 48],
         barPercentage: 0.5,
         backgroundColor: [
-            'rgba(135, 135, 135, 0.4)',
-            'rgba(135, 135, 135, 0.4)',
-            'rgba(135, 135, 135, 0.4)',
-            'rgba(135, 135, 135, 0.4)',
-            'rgba(33, 33, 33, 0.8)',
+            'rgba(139, 139, 139, 0.7)',
+            'rgba(139, 139, 139, 0.7)',
+            'rgba(139, 139, 139, 0.7)',
+            'rgba(139, 139, 139, 0.7)',
+            'rgba(0, 0, 0, 0.7)',
         ],
     }
 ]
@@ -247,9 +275,10 @@ async function generateChart() {
         // 1) General Page - Mental Illness
     const generalMentalIllnessOverallChart = await chartJSNodeCanvas.renderToDataURL(generalMentalIllnessOverallConfig);
     const generalMentalIllnessMean5yrsChart  = await chartJSNodeCanvas.renderToDataURL(generalMentalIllnessMean5yrsConfig);
-    const generalMentalIllnessEachPHQ9Chart = await chartJSNodeCanvas.renderToDataURL(generalMentalIllnessEachPHQ9Config);
+    // const generalMentalIllnessEachPHQ9Chart = await chartJSNodeCanvas.renderToDataURL(generalMentalIllnessEachPHQ9Config);
         // 2) General Page - Occupational Stress
     const generalOccuStressMean5yrsMaleChart = await chartJSNodeCanvas.renderToDataURL(generalOccuStressMean5yrsMaleConfig);
+
 
     // 5. <add to charts and return>
     const charts = {
