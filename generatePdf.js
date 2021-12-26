@@ -40,10 +40,17 @@ generateChart()
                 "general-mentalIllness-overall": charts['general-mentalIllness-overall'],
                 "general-mentalIllness-mean5yrs": charts["general-mentalIllness-mean5yrs"],
                 // "general-mentalIllness-each-PHQ9": charts["general-mentalIllness-each-PHQ9"],
-                // "general-occuStress-overall-male"
-                // "general-occuStress-overall-female"
+                // "general-mentalIllness-each-GAD7": charts["general-mentalIllness-each-GAD7"],
+                // "general-mentalIllness-each-ADNM4": charts["general-mentalIllness-each-ADNM4"],
+                // "general-mentalIllness-each-PCPTSD5": charts["general-mentalIllness-each-PCPTSD5"],
+                // "general-mentalIllness-each-KOSSSF": charts["general-mentalIllness-each-KOSSSF"],
+                // "general-mentalIllness-each-P4": charts["general-mentalIllness-each-P4"],
+
+                "general-occuStress-overall-male": charts["general-occuStress-overall-male"],
+                "general-occuStress-overall-female": charts["general-occuStress-overall-female"],
+                // 직무스트레스 요인별 결과 추가해야(+template도 아직 추가하지 않음)
                 "general-occuStress-mean5yrs-male": charts["general-occuStress-mean5yrs-male"],
-                // "general-occuStress-mean5yrs-female"
+                "general-occuStress-mean5yrs-female": charts["general-occuStress-mean5yrs-female"],
 
                 // "largeScaleCatOverall-riskPriority-level-1"
                 // "largeScaleCatOverall-riskPriority-point-1"
@@ -64,6 +71,6 @@ generateChart()
         ];
         labelmake({ inputs, template, font })
             .then((pdf) => {
-                fs.writeFileSync(__dirname + "/index12.pdf", pdf, "utf-8"); // 파일이름 등 자동으로 변경하는 것은~?
+                fs.writeFileSync(__dirname + "/index19.pdf", pdf, "utf-8"); // 파일이름 등 자동으로 변경하는 것은~?
             });
     })
