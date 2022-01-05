@@ -16,6 +16,9 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "@mdi/font": "^6.5.95",
+    "@mdi/js": "^6.5.95",
+    "amqplib": "^0.8.0",
     "canvas": "^2.8.0",
     "chart.js": "^3.6.2",
     "chartjs-node-canvas": "^4.1.5",

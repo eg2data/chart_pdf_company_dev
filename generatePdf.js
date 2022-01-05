@@ -12,15 +12,15 @@ const font = {
     }
 };
 
-// 가공이 필요하지 않은 나머지 text도, 여기서 그냥 바로 받아버렸다. 더 나은 방법은?
+// rabbitMQ를 가정한 곳에서 text를 가져온 것도 여기서 그냥 바로 받아버렸다. 더 나은 방법은?
 generateChart()
     .then(( charts ) => {
         const inputs = [
             {
-                // 1. cover: 고유검체번호 / 회사이름 / 연도자동
+// 1. cover: 고유검체번호 / 회사이름 / 연도자동
 // 2. 목차: 페이지자동
 // 3. overall page
-// getData로 가져오는 key값은 db에서의 key. 따라서 내가 설정한 변수명과 일치 하지 않겠지. 이 상황 구현하기.
+    // getData로 가져오는 key값은 rabbitMQ에서의 key. 따라서 내가 설정한 변수명과 일치 하지 않겠지. 이 상황 구현하기.
                 "general-reportDesc": getData("mainpage-description"),
                 "general-corpInfo-num": getData("mainpage-company")["distinct-number"],
                 "general-corpInfo-name": getData("mainpage-company")["company-name"],
@@ -39,12 +39,12 @@ generateChart()
                 "largeScaleCatOverall-measure": getData("level1page-result2"),
                 "general-mentalIllness-overall": charts['general-mentalIllness-overall'],
                 "general-mentalIllness-mean5yrs": charts["general-mentalIllness-mean5yrs"],
-                // "general-mentalIllness-each-PHQ9": charts["general-mentalIllness-each-PHQ9"],
-                // "general-mentalIllness-each-GAD7": charts["general-mentalIllness-each-GAD7"],
-                // "general-mentalIllness-each-ADNM4": charts["general-mentalIllness-each-ADNM4"],
-                // "general-mentalIllness-each-PCPTSD5": charts["general-mentalIllness-each-PCPTSD5"],
-                // "general-mentalIllness-each-KOSSSF": charts["general-mentalIllness-each-KOSSSF"],
-                // "general-mentalIllness-each-P4": charts["general-mentalIllness-each-P4"],
+                "general-mentalIllness-each-phq9": charts["general-mentalIllness-each-PHQ9"],
+                // "general-mentalIllness-each-gad7": charts["general-mentalIllness-each-GAD7"],
+                // "general-mentalIllness-each-adnm4": charts["general-mentalIllness-each-ADNM4"],
+                // "general-mentalIllness-each-pcptsd5": charts["general-mentalIllness-each-PCPTSD5"],
+                // "general-mentalIllness-each-kosssf": charts["general-mentalIllness-each-KOSSSF"],
+                // "general-mentalIllness-each-p4": charts["general-mentalIllness-each-P4"],
 
                 "general-occuStress-overall-male": charts["general-occuStress-overall-male"],
                 "general-occuStress-overall-female": charts["general-occuStress-overall-female"],
@@ -71,6 +71,6 @@ generateChart()
         ];
         labelmake({ inputs, template, font })
             .then((pdf) => {
-                fs.writeFileSync(__dirname + "/index19.pdf", pdf, "utf-8"); // 파일이름 등 자동으로 변경하는 것은~?
+                fs.writeFileSync(__dirname + "/index19.pdf", pdf, "utf-8"); // 파일이름 등 자동으로 변경하는 방법은?
             });
     })
