@@ -22,9 +22,9 @@ const dataList = [ // rabbitMQ에서 가져오는 것을 어떻게 표현할지?
     }
 ]
 
-function getData(key) {
+function getStringData(key) {
     return dataList[0][key] // object 내의 object의 value를 뽑아내는 것을 간편히 하기 위한 code 필요
 };
 
-export { getData };
+export { getStringData };
 
