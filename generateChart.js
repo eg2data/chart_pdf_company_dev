@@ -7,7 +7,7 @@ import fs from "fs";
 // 1) General Page - Mental Illness
 const generalMentalIllnessOverallData = [
         [70, 42, 76, 15, 36, 20],
-        [35, 54, 51, 47, 51, 20],
+        [35, 54, 51, 47, 51, 20], // 업계평균
 ]
 const generalMentalIllnessMean5yrsData = [24, 49, 74, 76, 80]
 const generalMentalIllnessEachPHQ9Data = [24, 15]
@@ -47,6 +47,35 @@ const generalOccuStressOverallFemaleData = [
     [36, 47, 35, 31, 39, 67, 45],
     [35, 45, 40, 30, 40, 55, 40]
 ]
+const generalOccuStressEachMaleDemandsData = [75, 75] // 마찬가지로 9 이하에서는 찌그러지는구나.
+const generalOccuStressEachMaleAutonomyData = [50, 25]
+const generalOccuStressEachMaleConflictData = [40, 75]
+const generalOccuStressEachMaleInstabilityData = [20, 85]
+const generalOccuStressEachMaleSystemData = [33, 11]
+const generalOccuStressEachMaleRewardData = [11, 55]
+const generalOccuStressEachMaleCultureData = [50, 75]
+const generalOccuStressEachFemaleDemandsData = [22, 80] // 마찬가지로 9 이하에서는 찌그러지는구나.
+const generalOccuStressEachFemaleAutonomyData = [25, 50]
+const generalOccuStressEachFemaleConflictData = [75, 75]
+const generalOccuStressEachFemaleInstabilityData = [50, 55]
+const generalOccuStressEachFemaleSystemData = [15, 81]
+const generalOccuStressEachFemaleRewardData = [60, 75]
+const generalOccuStressEachFemaleCultureData = [36, 70]
+generateCompareSignal(generalOccuStressEachMaleDemandsData);
+generateCompareSignal(generalOccuStressEachMaleAutonomyData);
+generateCompareSignal(generalOccuStressEachMaleConflictData);
+generateCompareSignal(generalOccuStressEachMaleInstabilityData);
+generateCompareSignal(generalOccuStressEachMaleSystemData);
+generateCompareSignal(generalOccuStressEachMaleRewardData);
+generateCompareSignal(generalOccuStressEachMaleCultureData);
+generateCompareSignal(generalOccuStressEachFemaleDemandsData);
+generateCompareSignal(generalOccuStressEachFemaleAutonomyData);
+generateCompareSignal(generalOccuStressEachFemaleConflictData);
+generateCompareSignal(generalOccuStressEachFemaleInstabilityData);
+generateCompareSignal(generalOccuStressEachFemaleSystemData);
+generateCompareSignal(generalOccuStressEachFemaleRewardData);
+generateCompareSignal(generalOccuStressEachFemaleCultureData);
+
 const generalOccuStressMean5yrsMaleData = [
     [85, 55, 65, 50, 65],
     [50, 40, 80, 70, 90], // 마지막 점 옆에는 이 데이터셋의 이름을 넣기. label 살려보면 될까? 가장 높은 그것의 5개년 추이, label
@@ -64,6 +93,7 @@ const barVerSmallCanvas = new ChartJSNodeCanvas({ width: 540, height: 96 });
 const barHorLargeCanvas = new ChartJSNodeCanvas({ width: 480, height: 36 });
 const barHorSmallCanvas = new ChartJSNodeCanvas({ width: 240, height: 36 });
 const polarAreaCanvas = new ChartJSNodeCanvas({ width: 216, height: 68 });
+// level을 위한 canvas 생성하고
 
 // 3. <defaults>
     // labels for hexagon, heptagon
@@ -552,6 +582,497 @@ async function generateChart() {
 
 
     // 직무스트레스 요인별 결과 추가해야(+template도 아직 추가하지 않음)
+    const generalOccuStressEachMaleDemandsConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachMaleDemandsData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachMaleAutonomyConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachMaleAutonomyData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachMaleConflictConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachMaleConflictData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachMaleInstabilityConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachMaleInstabilityData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachMaleSystemConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachMaleSystemData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachMaleRewardConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachMaleRewardData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachMaleCultureConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachMaleCultureData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachFemaleDemandsConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachFemaleDemandsData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachFemaleAutonomyConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachFemaleAutonomyData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachFemaleConflictConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachFemaleConflictData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachFemaleInstabilityConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachFemaleInstabilityData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachFemaleSystemConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachFemaleSystemData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachFemaleRewardConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachFemaleRewardData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+    const generalOccuStressEachFemaleCultureConfig = { // 함수 만들기 시도한게 왜 안됐는지 의문. missing semicolon?
+        type: 'bar',
+        data: {
+            labels: ['a','b'],
+            datasets: [
+                {
+                    data: generalOccuStressEachFemaleCultureData.slice(0,2),
+                    barPercentage: 0.0,
+                }
+            ]
+        },
+        plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
+        options: {
+            indexAxis: 'y',
+            scales: eachScales,
+            plugins: {
+                datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
+                    color: ['black', 'gray'],
+                    anchor: 'end',
+                    align: 'center',
+                    // offset:
+                    backgroundColor: ['black', 'gray'],
+                    borderWidth: 5,
+                    borderRadius: 5,
+                    font: {
+                        size: 5,
+                        weight: 'bold'
+                    },
+                },
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+
     const generalOccuStressMean5yrsMaleConfig = {
         data: {
             labels: mean5yrsLabels,
@@ -641,7 +1162,22 @@ async function generateChart() {
     // 2) General Page - Occupational Stress
     const generalOccuStressOverallMaleChart = await radarSmallCanvas.renderToDataURL(generalOccuStressOverallMaleConfig);
     const generalOccuStressOverallFemaleChart = await radarSmallCanvas.renderToDataURL(generalOccuStressOverallFemaleConfig);
-    // 직무스트레스 요인별 결과 추가해야(+template도 아직 추가하지 않음) - barHorSmallCanvas
+    // 직무스트레스 요인별 결과 - barHorSmallCanvas
+    const generalOccuStressEachMaleDemandsChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachMaleDemandsConfig);
+    const generalOccuStressEachMaleAutonomyChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachMaleAutonomyConfig);
+    const generalOccuStressEachMaleConflictChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachMaleConflictConfig);
+    const generalOccuStressEachMaleInstabilityChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachMaleInstabilityConfig);
+    const generalOccuStressEachMaleSystemChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachMaleSystemConfig);
+    const generalOccuStressEachMaleRewardChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachMaleRewardConfig);
+    const generalOccuStressEachMaleCultureChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachMaleCultureConfig);
+    const generalOccuStressEachFemaleDemandsChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachFemaleDemandsConfig);
+    const generalOccuStressEachFemaleAutonomyChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachFemaleAutonomyConfig);
+    const generalOccuStressEachFemaleConflictChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachFemaleConflictConfig);
+    const generalOccuStressEachFemaleInstabilityChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachFemaleInstabilityConfig);
+    const generalOccuStressEachFemaleSystemChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachFemaleSystemConfig);
+    const generalOccuStressEachFemaleRewardChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachFemaleRewardConfig);
+    const generalOccuStressEachFemaleCultureChart = await barHorSmallCanvas.renderToDataURL(generalOccuStressEachFemaleCultureConfig);
+
     const generalOccuStressMean5yrsMaleChart = await barVerSmallCanvas.renderToDataURL(generalOccuStressMean5yrsMaleConfig);
     const generalOccuStressMean5yrsFemaleChart = await barVerSmallCanvas.renderToDataURL(generalOccuStressMean5yrsFemaleConfig);
 
@@ -666,7 +1202,38 @@ async function generateChart() {
         // 2) General Page - Occupational Stress
         "general-occuStress-overall-male": generalOccuStressOverallMaleChart,
         "general-occuStress-overall-female": generalOccuStressOverallFemaleChart,
-        // 직무스트레스 요인별 결과 추가해야(+template도 아직 추가하지 않음)
+
+        // 직무스트레스 요인별 결과
+        // "general-occuStress-each-male-demands-level": generalOccuStressEachMaleDemandsLevel,
+        "general-occuStress-each-male-demands-chart": generalOccuStressEachMaleDemandsChart,
+        // "general-occuStress-each-male-autonomy-level": generalOccuStressEachMaleAutonomyLevel,
+        "general-occuStress-each-male-autonomy-chart": generalOccuStressEachMaleAutonomyChart,
+        // "general-occuStress-each-male-conflict-level": generalOccuStressEachMaleConflictLevel,
+        "general-occuStress-each-male-conflict-chart": generalOccuStressEachMaleConflictChart,
+        // "general-occuStress-each-male-instability-level": generalOccuStressEachMaleInstabilityLevel,
+        "general-occuStress-each-male-instability-chart": generalOccuStressEachMaleInstabilityChart,
+        // "general-occuStress-each-male-system-level": generalOccuStressEachMaleSystemLevel,
+        "general-occuStress-each-male-system-chart": generalOccuStressEachMaleSystemChart,
+        // "general-occuStress-each-male-reward-level": generalOccuStressEachMaleRewardLevel,
+        "general-occuStress-each-male-reward-chart": generalOccuStressEachMaleRewardChart,
+        // "general-occuStress-each-male-culture-level": generalOccuStressEachMaleCultureLevel,
+        "general-occuStress-each-male-culture-chart": generalOccuStressEachMaleCultureChart,
+
+        // "general-occuStress-each-female-demands-level": generalOccuStressEachFemaleDemandsLevel,
+        "general-occuStress-each-female-demands-chart": generalOccuStressEachFemaleDemandsChart,
+        // "general-occuStress-each-female-autonomy-level": generalOccuStressEachFemaleAutonomyLevel,
+        "general-occuStress-each-female-autonomy-chart": generalOccuStressEachFemaleAutonomyChart,
+        // "general-occuStress-each-female-conflict-level": generalOccuStressEachFemaleConflictLevel,
+        "general-occuStress-each-female-conflict-chart": generalOccuStressEachFemaleConflictChart,
+        // "general-occuStress-each-female-instability-level": generalOccuStressEachFemaleInstabilityLevel,
+        "general-occuStress-each-female-instability-chart": generalOccuStressEachFemaleInstabilityChart,
+        // "general-occuStress-each-female-system-level": generalOccuStressEachFemaleSystemLevel,
+        "general-occuStress-each-female-system-chart": generalOccuStressEachFemaleSystemChart,
+        // "general-occuStress-each-female-reward-level": generalOccuStressEachFemaleRewardLevel,
+        "general-occuStress-each-female-reward-chart": generalOccuStressEachFemaleRewardChart,
+        // "general-occuStress-each-female-culture-level": generalOccuStressEachFemaleCultureLevel,
+        "general-occuStress-each-female-culture-chart": generalOccuStressEachFemaleCultureChart,
+
         "general-occuStress-mean5yrs-male": generalOccuStressMean5yrsMaleChart,
         "general-occuStress-mean5yrs-female": generalOccuStressMean5yrsFemaleChart,
     }
@@ -682,107 +1249,19 @@ export {
     generalMentalIllnessEachADNM4Data,
     generalMentalIllnessEachPCPTSD5Data,
     generalMentalIllnessEachKOSSSFData,
-    generalMentalIllnessEachP4Data
+    generalMentalIllnessEachP4Data,
+    generalOccuStressEachMaleDemandsData,
+    generalOccuStressEachMaleAutonomyData,
+    generalOccuStressEachMaleConflictData,
+    generalOccuStressEachMaleInstabilityData,
+    generalOccuStressEachMaleSystemData,
+    generalOccuStressEachMaleRewardData,
+    generalOccuStressEachMaleCultureData,
+    generalOccuStressEachFemaleDemandsData,
+    generalOccuStressEachFemaleAutonomyData,
+    generalOccuStressEachFemaleConflictData,
+    generalOccuStressEachFemaleInstabilityData,
+    generalOccuStressEachFemaleSystemData,
+    generalOccuStressEachFemaleRewardData,
+    generalOccuStressEachFemaleCultureData
 };
-
-
-// for 4가지 색상
-//     if generalMentalIllnessEachPHQ9Data[0].data[1] > 25
-//         영역 지정을 어떻게 해서 채우느냐의 문제. => canvas를 만들어야할 것 같은데?
-//     => ok. 작은 캔버스를 하나 만들고. config를 하나 만들어서.
-//         => 근데 이건 chart일 필요가 없는데. 그냥 만들어진 캔버스를 채우기만 하면 되는데!!
-//     => 채우고나면, charts 안에 걍 같이 넣어서 주면 generatePdf.js에서 같은 형식으로 받을 수 있다.
-//
-//     <증상 색상 표현 관련>
-//     1. 이 용도의 작은 canvas를 하나 만든다.
-//     2. 조건문에 따라 canvas를 채운다.
-//     3. charts에서 받고 넘겨서 generatePdf.js에서 같은 형식으로 받아버린다.
-//     <데이터를 pdf에 넘길 수 있는 방법은>
-//     1. generateChart.js 내에 함수를 하나 만들어서, 숫자를 걍 넘겨버린다.
-//         함수(generalMentalIllnessEachPHQ9Data[0].data[1])
-//     <데이터 비교 결과를 pdf에 넘기는 것은>
-//     1. 마찬가지로 generateChart.js에서 결과를 다 만들어 낸 후, 그것을 걍 넘겨버린다.
-
-
-
-// canvas를 채울 조건문.
-// canvas 전체를 채우는 방법은?
-// for( let i = 0; i < generalMentalIllnessEachPHQ9Data[0].data.length; i++) {
-//     if (generalMentalIllnessEachPHQ9Data[0].data[i] < 25) {
-//         canvas 색상 = 'rgba(239, 239, 239, 0.5)'
-//     } else if (generalMentalIllnessEachPHQ9Data[0].data[i] < 50) {
-//         canvas 색상 = 'rgba(251, 240, 220, 0.5)'
-//     } else if (generalMentalIllnessEachPHQ9Data[0].data[i] < 75) {
-//         canvas 색상 = 'rgba(244, 209, 212, 0.5)'
-//     } else {
-//         canvas 색상 = 'rgba(223, 207, 209, 0.5)'
-//     }
-// }
-
-
-
-// 미해결 1: svg 관련
-// type: 'svg' 설정하면 pdf 생성 자체가 안되는 문제
-// const chartJSNodeCanvas = new ChartJSNodeCanvas({ type: 'svg', width: 340, height: 136});
-
-// 미해결 2: font 관련
-// global font를 NanumGothic로 통일하고자 했던 시도들
-// 1) generatePdf.js에서 export하고 여기서 import, 그리고 ChartJS.defaults 시도 => 실패
-// const NanumGothic = fs.readFileSync("./NanumGothic-Regular.ttf")
-// const font = {
-//     NanumGothic : {
-//         data: NanumGothic,
-//         subset: false
-//     }
-// };
-// 2) 직접 등록하는 방법 적용 시도 => 실패
-// import { registerFont } from 'canvas';
-// registerFont('./NanumGothic-Regular.ttf', {family:'NanumGothic'})
-// ChartJS.defaults.font.family = 'NanumGothic';
-//
-// ChartJS.defaults.font.family = NanumGothic;
-// ChartJS.defaults.font.family = "Arial";
-// ChartJS.defaults.font.family = "NanumGothic";
-//
-// ChartJS.defaults.font.size = 40; // 애초에 font는 data에만 적용되고, label에는 적용이 안되는건가? 그런 식으로 적용되는 중.
-
-// 미해결 3: 함수 활용 관련
-// semicolon missing error.. 음..
-// function generateGeneralMentalIllnessEachConfig(dataName) {
-//     type: 'bar',
-//         data: {
-//         labels: ['a','b'],
-//             datasets: [
-//             {
-//                 data: dataName.slice(0,2),
-//                 barPercentage: 0.0,
-//             }
-//         ]
-//     },
-//     plugins: [ChartDataLabels], // 이러면 y값이 차트 안으로 들어오긴 한다
-//         options: {
-//         indexAxis: 'y',
-//             scales: eachScales,
-//             plugins: {
-//             datalabels: { // 적당한 표현방식만 찾아주면 될 듯. 꼭 수치가 없어도 되지 않을까?
-//                 color: ['red', 'blue'],
-//                     anchor: 'end',
-//                     align: 'center',
-//                     // offset:
-//                     backgroundColor: ['red', 'blue'],
-//                     borderWidth: 5,
-//                     borderRadius: 5,
-//                     font: {
-//                     size: 5,
-//                         weight: 'bold'
-//                 },
-//             },
-//             legend: {
-//                 display: false
-//             }
-//         }
-//     },
-//
-// } // 이게 왜 안되는지 좀 의문이네.
-// const generalMentalIllnessEachPHQ9Config = generateGeneralMentalIllnessEachConfig(generalMentalIllnessEachPHQ9Data)
-

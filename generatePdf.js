@@ -12,6 +12,20 @@ import {
     generalMentalIllnessEachPCPTSD5Data,
     generalMentalIllnessEachKOSSSFData,
     generalMentalIllnessEachP4Data,
+    generalOccuStressEachMaleDemandsData,
+    generalOccuStressEachMaleAutonomyData,
+    generalOccuStressEachMaleConflictData,
+    generalOccuStressEachMaleInstabilityData,
+    generalOccuStressEachMaleSystemData,
+    generalOccuStressEachMaleRewardData,
+    generalOccuStressEachMaleCultureData,
+    generalOccuStressEachFemaleDemandsData,
+    generalOccuStressEachFemaleAutonomyData,
+    generalOccuStressEachFemaleConflictData,
+    generalOccuStressEachFemaleInstabilityData,
+    generalOccuStressEachFemaleSystemData,
+    generalOccuStressEachFemaleRewardData,
+    generalOccuStressEachFemaleCultureData
 } from "./generateChart"
 
 const NanumGothic = fs.readFileSync("./NanumGothic-Regular.ttf")
@@ -83,9 +97,87 @@ generateChart()
 
                 "general-occuStress-overall-male": charts["general-occuStress-overall-male"],
                 "general-occuStress-overall-female": charts["general-occuStress-overall-female"],
-                // 직무스트레스 요인별 결과 추가해야(+template도 아직 추가하지 않음)
+                // 직무스트레스 요인별 결과
+//                "general-occuStress-each-male-demands-level": charts["general-occuStress-each-male-demands-level"]
+                "general-occuStress-each-male-demands-current": getIntData(generalOccuStressEachMaleDemandsData, 0),
+                "general-occuStress-each-male-demands-mean": getIntData(generalOccuStressEachMaleDemandsData, 1),
+                "general-occuStress-each-male-demands-compare": getIntData(generalOccuStressEachMaleDemandsData, 2),
+                "general-occuStress-each-male-demands-chart": charts["general-occuStress-each-male-demands-chart"],
+//                "general-occuStress-each-male-autonomy-level": charts["general-occuStress-each-male-autonomy-level"]
+                "general-occuStress-each-male-autonomy-current": getIntData(generalOccuStressEachMaleAutonomyData, 0),
+                "general-occuStress-each-male-autonomy-mean": getIntData(generalOccuStressEachMaleAutonomyData, 1),
+                "general-occuStress-each-male-autonomy-compare": getIntData(generalOccuStressEachMaleAutonomyData, 2),
+                "general-occuStress-each-male-autonomy-chart": charts["general-occuStress-each-male-autonomy-chart"],
+//                "general-occuStress-each-male-conflict-level": charts["general-occuStress-each-male-conflict-level"]
+                "general-occuStress-each-male-conflict-current": getIntData(generalOccuStressEachMaleConflictData, 0),
+                "general-occuStress-each-male-conflict-mean": getIntData(generalOccuStressEachMaleConflictData, 1),
+                "general-occuStress-each-male-conflict-compare": getIntData(generalOccuStressEachMaleConflictData, 2),
+                "general-occuStress-each-male-conflict-chart": charts["general-occuStress-each-male-conflict-chart"],
+//                "general-occuStress-each-male-instability-level": charts["general-occuStress-each-male-instability-level"]
+                "general-occuStress-each-male-instability-current": getIntData(generalOccuStressEachMaleInstabilityData, 0),
+                "general-occuStress-each-male-instability-mean": getIntData(generalOccuStressEachMaleInstabilityData, 1),
+                "general-occuStress-each-male-instability-compare": getIntData(generalOccuStressEachMaleInstabilityData, 2),
+                "general-occuStress-each-male-instability-chart": charts["general-occuStress-each-male-instability-chart"],
+//                "general-occuStress-each-male-system-level": charts["general-occuStress-each-male-system-level"]
+                "general-occuStress-each-male-system-current": getIntData(generalOccuStressEachMaleSystemData, 0),
+                "general-occuStress-each-male-system-mean": getIntData(generalOccuStressEachMaleSystemData, 1),
+                "general-occuStress-each-male-system-compare": getIntData(generalOccuStressEachMaleSystemData, 2),
+                "general-occuStress-each-male-system-chart": charts["general-occuStress-each-male-system-chart"],
+//                "general-occuStress-each-male-reward-level": charts["general-occuStress-each-male-reward-level"]
+                "general-occuStress-each-male-reward-current": getIntData(generalOccuStressEachMaleRewardData, 0),
+                "general-occuStress-each-male-reward-mean": getIntData(generalOccuStressEachMaleRewardData, 1),
+                "general-occuStress-each-male-reward-compare": getIntData(generalOccuStressEachMaleRewardData, 2),
+                "general-occuStress-each-male-reward-chart": charts["general-occuStress-each-male-reward-chart"],
+//                "general-occuStress-each-male-reward-level": charts["general-occuStress-each-male-culture-level"]
+                "general-occuStress-each-male-culture-current": getIntData(generalOccuStressEachMaleCultureData, 0),
+                "general-occuStress-each-male-culture-mean": getIntData(generalOccuStressEachMaleCultureData, 1),
+                "general-occuStress-each-male-culture-compare": getIntData(generalOccuStressEachMaleCultureData, 2),
+                "general-occuStress-each-male-culture-chart": charts["general-occuStress-each-male-culture-chart"],
+
+//                "general-occuStress-each-female-demands-level": charts["general-occuStress-each-female-demands-level"]
+                "general-occuStress-each-female-demands-current": getIntData(generalOccuStressEachFemaleDemandsData, 0),
+                "general-occuStress-each-female-demands-mean": getIntData(generalOccuStressEachFemaleDemandsData, 1),
+                "general-occuStress-each-female-demands-compare": getIntData(generalOccuStressEachFemaleDemandsData, 2),
+                "general-occuStress-each-female-demands-chart": charts["general-occuStress-each-female-demands-chart"],
+//                "general-occuStress-each-female-autonomy-level": charts["general-occuStress-each-female-autonomy-level"]
+                "general-occuStress-each-female-autonomy-current": getIntData(generalOccuStressEachFemaleAutonomyData, 0),
+                "general-occuStress-each-female-autonomy-mean": getIntData(generalOccuStressEachFemaleAutonomyData, 1),
+                "general-occuStress-each-female-autonomy-compare": getIntData(generalOccuStressEachFemaleAutonomyData, 2),
+                "general-occuStress-each-female-autonomy-chart": charts["general-occuStress-each-female-autonomy-chart"],
+//                "general-occuStress-each-female-conflict-level": charts["general-occuStress-each-female-conflict-level"]
+                "general-occuStress-each-female-conflict-current": getIntData(generalOccuStressEachFemaleConflictData, 0),
+                "general-occuStress-each-female-conflict-mean": getIntData(generalOccuStressEachFemaleConflictData, 1),
+                "general-occuStress-each-female-conflict-compare": getIntData(generalOccuStressEachFemaleConflictData, 2),
+                "general-occuStress-each-female-conflict-chart": charts["general-occuStress-each-female-conflict-chart"],
+//                "general-occuStress-each-female-instability-level": charts["general-occuStress-each-female-instability-level"]
+                "general-occuStress-each-female-instability-current": getIntData(generalOccuStressEachFemaleInstabilityData, 0),
+                "general-occuStress-each-female-instability-mean": getIntData(generalOccuStressEachFemaleInstabilityData, 1),
+                "general-occuStress-each-female-instability-compare": getIntData(generalOccuStressEachFemaleInstabilityData, 2),
+                "general-occuStress-each-female-instability-chart": charts["general-occuStress-each-female-instability-chart"],
+//                "general-occuStress-each-female-system-level": charts["general-occuStress-each-female-system-level"]
+                "general-occuStress-each-female-system-current": getIntData(generalOccuStressEachFemaleSystemData, 0),
+                "general-occuStress-each-female-system-mean": getIntData(generalOccuStressEachFemaleSystemData, 1),
+                "general-occuStress-each-female-system-compare": getIntData(generalOccuStressEachFemaleSystemData, 2),
+                "general-occuStress-each-female-system-chart": charts["general-occuStress-each-female-system-chart"],
+//                "general-occuStress-each-female-reward-level": charts["general-occuStress-each-female-reward-level"]
+                "general-occuStress-each-female-reward-current": getIntData(generalOccuStressEachFemaleRewardData, 0),
+                "general-occuStress-each-female-reward-mean": getIntData(generalOccuStressEachFemaleRewardData, 1),
+                "general-occuStress-each-female-reward-compare": getIntData(generalOccuStressEachFemaleRewardData, 2),
+                "general-occuStress-each-female-reward-chart": charts["general-occuStress-each-female-reward-chart"],
+//                "general-occuStress-each-female-reward-level": charts["general-occuStress-each-female-culture-level"]
+                "general-occuStress-each-female-culture-current": getIntData(generalOccuStressEachFemaleCultureData, 0),
+                "general-occuStress-each-female-culture-mean": getIntData(generalOccuStressEachFemaleCultureData, 1),
+                "general-occuStress-each-female-culture-compare": getIntData(generalOccuStressEachFemaleCultureData, 2),
+                "general-occuStress-each-female-culture-chart": charts["general-occuStress-each-female-culture-chart"],
+
                 "general-occuStress-mean5yrs-male": charts["general-occuStress-mean5yrs-male"],
                 "general-occuStress-mean5yrs-female": charts["general-occuStress-mean5yrs-female"],
+
+
+
+
+
+
 
                 // "largeScaleCatOverall-riskPriority-level-1"
                 // "largeScaleCatOverall-riskPriority-point-1"
@@ -106,6 +198,6 @@ generateChart()
         ];
         labelmake({ inputs, template, font })
             .then((pdf) => {
-                fs.writeFileSync(__dirname + "/index22.pdf", pdf, "utf-8"); // 파일이름 등 자동으로 변경하는 방법은?
+                fs.writeFileSync(__dirname + "/complete_til_general_220107.pdf", pdf, "utf-8"); // 파일이름 등 자동으로 변경하는 방법은?
             });
     })
