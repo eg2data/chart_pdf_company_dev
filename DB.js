@@ -1,4 +1,4 @@
-const dataList = [ // rabbitMQ에서 가져오는 것을 어떻게 표현할지?
+const dataList = [ // rabbitMQ에서 가져오는 것을 어떻게 표현할지? //test //test2
     {
         "mainpage-description" : "TESS의 직장 마음 건강 보고서는 챗봇을 통한 자가보고형식 설문과 HRV 측정값을 기반으로 통계적인 분석을 통해 결과를 제공합니다. TESS 보고서에서 제공하는 결과값은 직무별로 대분류, 중분류, 소분류로 나누어 통계를 제공하는 형식입니다.",
         "mainpage-company":
